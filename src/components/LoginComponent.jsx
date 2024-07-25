@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
-import LinkedinLogo from "../assets/linkedinLogo.png";
+import LinkedinLogo from "../assets/Mission.png";
 import GoogleButton from 'react-google-button';
 import { useNavigate } from "react-router-dom";
 import '../Sass/LoginComponent.scss';
@@ -13,6 +13,7 @@ export default function LoginComponent() {
         try{
             let res = await LoginAPI(credentials.email, credentials.password);
             toast.success("Signed In to Linkedin!");
+            navigate("/home");
         } catch(err) {
             toast.error("Please Check your Credentials.");
             toast.error("If it is your first time in the platform, Click Join now !");
@@ -22,13 +23,13 @@ export default function LoginComponent() {
     const googleSignIn = () => {
         let response = GoogleSignInAPI();
         console.log(response);
+        navigate("/home");
     };
     return( 
     <div className = "login-wrapper">
         <img src ={LinkedinLogo} className="linkedinLogo"/>
         <div className="login-wrapper-inner">
-        <h1 className="heading">Sign in</h1>
-        <p className="sub-heading">Stay updated on your professional world</p>
+        <h1 className="heading">Sou um missionário</h1>
         <div className="auth-inputs">
             <input
                 onChange={(event) =>
